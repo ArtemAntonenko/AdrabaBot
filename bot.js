@@ -4,10 +4,13 @@ const AdrabaLogo = fs.createReadStream('./assets/adraba-logo-2.png');
 
 const TOKEN = process.env.TOKEN;
 const TelegramBot = require('node-telegram-bot-api');
+let bot
 
 if(process.env.NODE_ENV === 'production') {
   bot = new TelegramBot(TOKEN);
-  bot.setWebHook(process.env.HEROKU_URL + bot.TOKEN);
+  const webhookUrl = process.env.HEROKU_URL + bot.TOKEN
+  console.log('webhookUrl', webhookUrl)
+  bot.setWebHook(webhookUrl);
 }
 else {
   bot = new TelegramBot(TOKEN, { polling: true });

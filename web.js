@@ -14,6 +14,7 @@ let server = app.listen(process.env.PORT, function () {
   let port = server.address().port;
   
   console.log('Web server started at http://%s:%s', host, port);
+  console.dir('server.address()', server.address())
 });
 
 module.exports = function (bot) {
