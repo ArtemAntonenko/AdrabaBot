@@ -1,10 +1,7 @@
 process.env.NTBA_FIX_319 = 1
 process.env.NTBA_FIX_350 = 1
 
-const setManagementController = require('./bot-controllers/management/index.js')
-
-const fs = require('fs');
-const AdrabaLogo = fs.readFileSync('./assets/adraba-logo-2.png');
+const setupBotControllers = require('./bot-controllers/index.js')
 
 // const TOKEN = process.env.TOKEN;
 const TOKEN = '623206542:AAG-Us9W2uJkNpvtIbzfqisJDBIdIDQhsow';
@@ -23,26 +20,8 @@ else {
   bot = new TelegramBot(TOKEN, { polling: true });
 }
 
-setManagementController(bot)
+setupBotControllers(bot)
 
 console.log('bot server started...');
-
-bot.onText(/\/start/, async (msg, match) => {
-  
-  // const opts = {
-  //   reply_markup: {
-  //     inline_keyboard: [
-  //       [{
-  //         text: 'Start induction',
-  //         callback_data: JSON.stringify({
-  //           command: 'start-induction'
-  //         })
-  //       }]
-  //     ]
-  //   }
-  // };
-  await bot.sendPhoto(msg.chat.id, AdrabaLogo)
-  await bot.sendMessage(msg.chat.id, 'Welcome to Adraba! \n /management')
-});
 
 module.exports = bot;
