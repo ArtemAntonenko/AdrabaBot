@@ -8,9 +8,13 @@ module.exports = (bot) => {
         await bot.sendPhoto(msg.chat.id, managers.COO.photo)
         await bot.sendMessage(msg.chat.id, managers.COO.about, { parse_mode: "HTML" })
 
-        // await bot.sendPhoto(msg.chat.id, managers.HRDirector.photo)
-        // await bot.sendPhoto(msg.chat.id, managers.HeadOfProjects.photo)
-        // await bot.sendPhoto(msg.chat.id, managers.Advisor.photo)
-        // await bot.sendMessage(msg.chat.id, 'Welcome to Adraba! \n /management')
+        await bot.sendPhoto(msg.chat.id, managers.HRDirector.photo)
+        await bot.sendMessage(msg.chat.id, managers.HRDirector.about, { parse_mode: "HTML" })
+
+        await bot.sendPhoto(msg.chat.id, managers.HeadOfProjects.photo)
+        await bot.sendMessage(msg.chat.id, managers.HeadOfProjects.about, { parse_mode: "HTML" })
+        
+        await bot.sendPhoto(msg.chat.id, managers.Advisor.photo)
+        await bot.sendMessage(msg.chat.id, managers.Advisor.about, { parse_mode: "HTML" })
     });
 }
