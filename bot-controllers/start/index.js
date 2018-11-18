@@ -18,7 +18,7 @@ module.exports = (bot) => {
         // };
         await bot.sendPhoto(msg.chat.id, AdrabaLogo)
         await bot.sendMessage(msg.chat.id,
-             '<b>Welcome to Adraba!</b> \n\nCommands: \n/management',
+             '<b>Welcome to Adraba!</b> \n\nCommands: \n/management \n/induction',
              { parse_mode: "HTML" })
     });
 }
