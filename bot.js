@@ -3,8 +3,7 @@ process.env.NTBA_FIX_350 = 1
 
 const TelegramBot = require('node-telegram-bot-api');
 const setupBotControllers = require('./bot-controllers')
-// const TOKEN = process.env.TOKEN;
-const TOKEN = '623206542:AAG-Us9W2uJkNpvtIbzfqisJDBIdIDQhsow';
+const TOKEN = process.env.TOKEN;
 let bot
 
 if(process.env.NODE_ENV === 'production') {
@@ -12,6 +11,7 @@ if(process.env.NODE_ENV === 'production') {
   bot = new TelegramBot(TOKEN);
   const webhookUrl = process.env.HEROKU_URL + bot.TOKEN
   console.log('webhookUrl', webhookUrl)
+  console.log('bot.TOKEN', bot.TOKEN)
   bot.setWebHook(webhookUrl);
 }
 else {
