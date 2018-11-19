@@ -3,7 +3,7 @@ const managers = require('./managers')
 const msgOptions = { parse_mode: "HTML", disable_notification: true }
 
 module.exports = (bot) => {
-    bot.onText(/\/management/, async (msg, match) => {
+    bot.onText(/\/managers/, async (msg, match) => {
         await bot.sendMessage(msg.chat.id, getManagersList(), msgOptions)
     });
 
@@ -25,8 +25,8 @@ function getManagersList() {
 }
 
 function getManagerInfo(manager) {
-    return `<b>${manager.name}</b>
-     \n<b>${manager.position}</b>
-     \n\n${manager.about}
-     \n${getManagersList()}`
+    return `<b>${manager.name}</b>\n` +
+           `<i>${manager.position}</i>\n\n` + 
+           `${manager.about}\n\n` + 
+           `See also other /managers`
 }

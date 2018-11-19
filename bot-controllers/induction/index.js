@@ -38,7 +38,8 @@ function getKeyboardOptions ({step = 1}) {
             })
           }
         ]]
-      }
+      },
+      disable_notification: true
     }
   }
 }
