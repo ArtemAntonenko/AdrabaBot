@@ -6,7 +6,7 @@ const commands = {
 
 module.exports = (bot) => {
   bot.onText(/\/induction/, async (msg) => {
-    sendStepMessage({bot, msg, step: 1})
+    sendStepMessage({ bot, msg, step: 1 })
   })
 
   bot.on("callback_query", (callbackQuery) => {
@@ -23,7 +23,7 @@ module.exports = (bot) => {
   })
 }
 
-function getKeyboardOptions ({step = 1}) {
+function getKeyboardOptions({ step = 1 }) {
   if (step === inductionSteps.length) {
     return {}
   } else {
@@ -44,20 +44,22 @@ function getKeyboardOptions ({step = 1}) {
   }
 }
 
-function getStepText({step = 1}) {
+function getStepText({ step = 1 }) {
   return inductionSteps[--step].text
 }
 
-function sendStepMessage({bot, msg, callbackQueryId, step = 1}) {
+function sendStepMessage({ bot, msg, callbackQueryId, step = 1 }) {
   if (step <= inductionSteps.length) {
+    if (callbackQueryId) {
+      bot.editMessageReplyMarkup(
+        { inline_keyboard: [[]] },
+        { chat_id: msg.chat.id, message_id: msg.message_id })
+    }
+
     bot.sendMessage(
       msg.chat.id,
-      getStepText({step}),
-      getKeyboardOptions({step})
+      getStepText({ step }),
+      getKeyboardOptions({ step })
     )
-
-    if (callbackQueryId) {
-      bot.answerCallbackQuery(callbackQueryId)
-    }
   }
 }
