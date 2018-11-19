@@ -9,9 +9,9 @@ let bot
 if(process.env.NODE_ENV === 'production') {
   console.log('Case 1')
   bot = new TelegramBot(TOKEN);
-  const webhookUrl = process.env.HEROKU_URL + bot.TOKEN
+  const webhookUrl = process.env.HEROKU_URL + TOKEN
   console.log('webhookUrl', webhookUrl)
-  console.log('bot.TOKEN', bot.TOKEN)
+  console.log('bot.TOKEN', TOKEN)
   bot.setWebHook(webhookUrl);
 }
 else {
