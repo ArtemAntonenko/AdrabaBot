@@ -1,5 +1,5 @@
 var http = require("http");
-const INTERVAL = 15 * 60 * 1000
+const INTERVAL = 0.5 * 60 * 1000
 
 module.exports = () => {
   setInterval(function() {
