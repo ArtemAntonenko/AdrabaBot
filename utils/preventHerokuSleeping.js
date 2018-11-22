@@ -1,5 +1,5 @@
 var https = require("https");
-const INTERVAL = 25 * 60 * 1000
+const INTERVAL = 15 * 60 * 1000
 
 module.exports = () => {
   setInterval(function() {
