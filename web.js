@@ -1,6 +1,7 @@
 let express = require('express');
 let packageInfo = require('./package.json');
 let bodyParser = require('body-parser');
+const preventHerokuSleeping =  require('./utils/preventHerokuSleeping')
 
 let app = express();
 app.use(bodyParser.json());
@@ -22,4 +23,5 @@ module.exports = function (bot) {
     bot.processUpdate(req.body);
     res.sendStatus(200);
   });
+  preventHerokuSleeping()
 };
